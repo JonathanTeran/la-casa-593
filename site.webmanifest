@@ -1,0 +1,12 @@
+{
+  "name": "La Casa 593",
+  "short_name": "Casa 593",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#06090e",
+  "theme_color": "#070b12",
+  "icons": [
+    {"src": "assets/favicon.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "assets/apple-touch-icon.png", "sizes": "180x180", "type": "image/png"}
+  ]
+}
