@@ -216,7 +216,44 @@ svg.stroke .dot { fill: currentColor; stroke: none; }
 }
 .tag-ch i { background: var(--live); }
 
-/* barra de controles (decorativa) */
+/* aviso para activar el sonido cuando el navegador bloquea el autoarranque */
+.soundcta {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(10px, 2vw, 18px);
+  translate: -50% 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 17px;
+  border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: 999px;
+  background: rgba(8, 11, 16, .84);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: clamp(.68rem, 1.7vw, .78rem);
+  font-weight: 700;
+  letter-spacing: .06em;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .5);
+  animation: ctaIn .5s ease both, ctaBeat 2.6s ease-in-out 1s infinite;
+  transition: border-color .25s ease, background .25s ease;
+}
+.soundcta:hover { border-color: rgba(255, 106, 0, .8); background: rgba(255, 106, 0, .18); }
+.soundcta:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+.soundcta svg { width: 17px; }
+.soundcta[hidden] { display: none; }
+
+@keyframes ctaIn {
+  from { opacity: 0; translate: -50% 10px; }
+  to { opacity: 1; translate: -50% 0; }
+}
+@keyframes ctaBeat {
+  0%, 100% { box-shadow: 0 10px 30px rgba(0, 0, 0, .5); }
+  50% { box-shadow: 0 10px 30px rgba(0, 0, 0, .5), 0 0 0 7px rgba(255, 106, 0, .09); }
+}
+
+/* barra de controles */
 .controls {
   display: flex;
   align-items: center;

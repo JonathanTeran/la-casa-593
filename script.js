@@ -27,6 +27,11 @@
   const feed = document.getElementById('feed');
   if (!feed) return;
 
+  // Intenciones explícitas de la persona. Sirven para distinguir "lo silenció
+  // porque quiso" de "el navegador lo silenció por su política".
+  let userMuted = false;
+  let userPaused = false;
+
   const swap = (button, shownClass, hiddenClass) => {
     const shown = button.querySelector(`.${shownClass}`);
     const hidden = button.querySelector(`.${hiddenClass}`);
@@ -34,12 +39,101 @@
     if (hidden) hidden.hidden = true;
   };
 
-  // reproducir / pausar
+  /* ─── sonido ───
+     Ningún navegador permite arrancar con sonido sin un gesto previo: o el
+     vídeo va silenciado, o no se reproduce. Se intenta con sonido y, si lo
+     rechazan, se cae a silencio y basta cualquier toque o tecla para
+     activarlo, sin tener que buscar el botón.
+     No se comprueba el resultado con un temporizador, porque el navegador
+     puede revertirlo más tarde: se reacciona al estado real del vídeo.   */
+
+  const soundCta = document.getElementById('soundCta');
+  const gestures = ['pointerdown', 'touchstart', 'click', 'keydown'];
+
+  function onGesture() {
+    releaseGestures();
+    requestSound();
+  }
+
+  function armGestures() {
+    gestures.forEach((type) => document.addEventListener(type, onGesture, true));
+  }
+
+  function releaseGestures() {
+    gestures.forEach((type) => document.removeEventListener(type, onGesture, true));
+  }
+
+  function offerSound() {
+    if (soundCta) soundCta.hidden = false;
+    armGestures();
+  }
+
+  function soundSettled() {
+    if (soundCta) soundCta.hidden = true;
+    releaseGestures();
+  }
+
+  // Sonar exige reproducirse: `muted = false` con el vídeo pausado no es
+  // éxito, es quedarse sin imagen y sin audio.
+  const hasSound = () => !feed.muted && !feed.paused;
+
+  function fallbackMuted() {
+    feed.muted = true;
+    feed.play().catch(() => {});
+    offerSound();
+  }
+
+  function requestSound() {
+    userMuted = false;
+    feed.muted = false;
+    feed.volume = 1;
+    const resume = feed.play();
+    if (resume && typeof resume.then === 'function') {
+      resume.then(() => { if (hasSound()) soundSettled(); }).catch(fallbackMuted);
+    } else if (feed.paused) {
+      fallbackMuted();
+    }
+  }
+
+  // El estado real del vídeo es la única fuente fiable: si acaba silenciado
+  // sin que nadie lo pidiera, es que el navegador lo impuso.
+  feed.addEventListener('volumechange', () => {
+    if (hasSound()) soundSettled();
+    else if (feed.muted && !userMuted) offerSound();
+  });
+
+  feed.addEventListener('play', () => {
+    if (hasSound()) soundSettled();
+  });
+
+  // Si el navegador pausa el vídeo por su cuenta (pasa al quitar el silencio
+  // sin gesto), antes que dejarlo congelado se vuelve a silencio.
+  feed.addEventListener('pause', () => {
+    if (userPaused) return;
+    if (!feed.muted) fallbackMuted();
+    else feed.play().catch(() => {});
+  });
+
+  if (soundCta) {
+    soundCta.addEventListener('click', (event) => {
+      event.stopPropagation();
+      releaseGestures();
+      requestSound();
+    });
+  }
+
+  /* ─── controles ─── */
+
   const btnPlay = document.getElementById('btnPlay');
   if (btnPlay) {
     btnPlay.addEventListener('click', () => {
-      if (feed.paused) feed.play().catch(() => {});
-      else feed.pause();
+      if (feed.paused) {
+        userPaused = false;
+        feed.play().catch(() => {});
+      } else {
+        userPaused = true;
+        feed.pause();
+      }
     });
 
     const reflectPlayState = () => {
@@ -54,13 +148,17 @@
     reflectPlayState();
   }
 
-  // sonido: arranca silenciado porque el navegador exige `muted` para
-  // reproducir solo; quitarlo requiere que lo pida la persona
   const btnMute = document.getElementById('btnMute');
   if (btnMute) {
     btnMute.addEventListener('click', () => {
-      feed.muted = !feed.muted;
-      if (!feed.muted && feed.paused) feed.play().catch(() => {});
+      if (feed.muted) {
+        releaseGestures();
+        requestSound();
+      } else {
+        userMuted = true;
+        feed.muted = true;
+        soundSettled();
+      }
     });
 
     const reflectMuteState = () => {
@@ -74,7 +172,7 @@
     reflectMuteState();
   }
 
-  // miniatura: solo se muestra si el navegador la admite de verdad
+  // miniatura: solo si el navegador la admite de verdad
   const btnPip = document.getElementById('btnPip');
   if (btnPip && document.pictureInPictureEnabled && !feed.disablePictureInPicture) {
     btnPip.hidden = false;
@@ -103,10 +201,5 @@
     });
   }
 
-  // si el navegador bloquea la reproducción automática, deja el póster
-  // y muestra el botón en estado "reproducir" en vez de mentir
-  const attempt = feed.play();
-  if (attempt && typeof attempt.catch === 'function') {
-    attempt.catch(() => {});
-  }
+  requestSound();
 })();
