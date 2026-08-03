@@ -106,8 +106,6 @@ svg.stroke .dot { fill: currentColor; stroke: none; }
   width: auto;
   max-width: min(92vw, 420px);
   object-fit: contain;
-  /* el fondo del recorte es negro puro: screen lo funde con la página */
-  mix-blend-mode: screen;
 }
 
 /* ─────────── titulares ─────────── */

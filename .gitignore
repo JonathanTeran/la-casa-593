@@ -1,8 +1,13 @@
 # Originales pesados: se quedan en local, a la web sube la versión optimizada
 assets/LOGO CASA 593 HORIZONTAL V2.mp4
+assets/LOGO-593.png
 assets/IMG_*.PNG
 assets/IMG_*.png
 
 # Artefactos de pruebas
 .playwright-mcp/
 *.tmp
+
+# Originales del logo que ya no usa la web (se conservan en local)
+assets/la-casa-593.jpg
+assets/la-casa-593.webp
