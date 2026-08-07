@@ -22,7 +22,7 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="preload" as="image" href="assets/logo.webp" type="image/webp" fetchpriority="high">
-  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
   <div class="glow" aria-hidden="true"></div>
@@ -40,48 +40,15 @@
     <p class="kicker">Estamos alistándonos</p>
     <p class="lede">Muy pronto las puertas se abrirán, <span>nada volverá a ser igual</span>.</p>
 
-    <section class="player" aria-label="Presentación de La Casa 593">
+    <section class="player" aria-label="Video promocional de La Casa 593">
       <div class="screen">
-        <video id="feed" class="screen-video"
-               poster="assets/casa593-poster.jpg"
-               autoplay muted loop playsinline preload="metadata"
-               aria-label="Vídeo de presentación de La Casa 593">
-          <source src="assets/casa593.mp4" type="video/mp4">
-        </video>
-
-        <div class="screen-lines" aria-hidden="true"></div>
-        <div class="screen-roll" aria-hidden="true"></div>
-
-        <span class="tag tag-live" aria-hidden="true"><i></i>EN VIVO</span>
-        <span class="tag tag-ch" aria-hidden="true"><i></i>LA CASA 593 LIVE</span>
-
-        <button type="button" class="soundcta" id="soundCta" hidden>
-          <svg viewBox="0 0 24 24" class="stroke" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></svg>
-          <span>Activar sonido</span>
-        </button>
-      </div>
-
-      <div class="controls">
-        <button type="button" class="ctl" id="btnPlay" aria-label="Pausar vídeo">
-          <svg viewBox="0 0 24 24" class="ico-pause"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
-          <svg viewBox="0 0 24 24" class="ico-play" hidden><path d="M7 4.6v14.8L19.4 12 7 4.6Z"/></svg>
-        </button>
-
-        <button type="button" class="ctl" id="btnMute" aria-label="Activar sonido">
-          <svg viewBox="0 0 24 24" class="stroke ico-off"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="m17 9.5 4 5"/><path d="m21 9.5-4 5"/></svg>
-          <svg viewBox="0 0 24 24" class="stroke ico-on" hidden><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></svg>
-        </button>
-
-        <span class="ctl-live" aria-hidden="true"><i></i>EN VIVO</span>
-        <span class="ctl-track" aria-hidden="true"><b></b><em></em></span>
-
-        <button type="button" class="ctl" id="btnPip" aria-label="Ver en miniatura" hidden>
-          <svg viewBox="0 0 24 24" class="stroke"><rect x="2.5" y="4.5" width="19" height="15" rx="2.4"/><rect x="12.5" y="12" width="8" height="6.4" rx="1.4"/></svg>
-        </button>
-
-        <button type="button" class="ctl" id="btnFull" aria-label="Pantalla completa">
-          <svg viewBox="0 0 24 24" class="stroke"><path d="M8 3H3v5"/><path d="M16 3h5v5"/><path d="M16 21h5v-5"/><path d="M8 21H3v-5"/></svg>
-        </button>
+        <iframe id="mainYoutube"
+                class="main-youtube"
+                src="https://www.youtube-nocookie.com/embed/1tJVxlhWSMw?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=1tJVxlhWSMw&amp;rel=0&amp;playsinline=1&amp;enablejsapi=1"
+                title="La Casa 593 | Muy Pronto — video promocional oficial"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
       </div>
     </section>
 
@@ -143,44 +110,6 @@
           </div>
         </article>
 
-        <article class="video-card">
-          <button type="button" class="video-preview" data-video-id="H2Zp_X7LoVg" aria-label="Reproducir La Casa 593, Lore Te Cuenta">
-            <img src="https://i.ytimg.com/vi/H2Zp_X7LoVg/hqdefault.jpg" alt="" loading="lazy" decoding="async">
-            <span class="video-shade" aria-hidden="true"></span>
-            <span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 7 8 5-8 5V7Z"/></svg></span>
-            <span class="video-duration">0:23</span>
-          </button>
-          <div class="video-info">
-            <h3>La Casa 593 | Lore Te Cuenta</h3>
-            <a href="https://www.youtube.com/watch?v=H2Zp_X7LoVg" target="_blank" rel="noopener noreferrer">Ver en YouTube <span aria-hidden="true">↗</span></a>
-          </div>
-        </article>
-
-        <article class="video-card">
-          <button type="button" class="video-preview" data-video-id="woOSlnAHOzU" aria-label="Reproducir La Casa 593, Los dueños de La Casa 593">
-            <img src="https://i.ytimg.com/vi/woOSlnAHOzU/hqdefault.jpg" alt="" loading="lazy" decoding="async">
-            <span class="video-shade" aria-hidden="true"></span>
-            <span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 7 8 5-8 5V7Z"/></svg></span>
-            <span class="video-duration">2:08</span>
-          </button>
-          <div class="video-info">
-            <h3>La Casa 593 | Los dueños de #LaCasa593</h3>
-            <a href="https://www.youtube.com/watch?v=woOSlnAHOzU" target="_blank" rel="noopener noreferrer">Ver en YouTube <span aria-hidden="true">↗</span></a>
-          </div>
-        </article>
-
-        <article class="video-card">
-          <button type="button" class="video-preview" data-video-id="1tJVxlhWSMw" aria-label="Reproducir La Casa 593, Muy Pronto">
-            <img src="https://i.ytimg.com/vi/1tJVxlhWSMw/hqdefault.jpg" alt="" loading="lazy" decoding="async">
-            <span class="video-shade" aria-hidden="true"></span>
-            <span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 7 8 5-8 5V7Z"/></svg></span>
-            <span class="video-duration">0:53</span>
-          </button>
-          <div class="video-info">
-            <h3>La Casa 593 | Muy Pronto</h3>
-            <a href="https://www.youtube.com/watch?v=1tJVxlhWSMw" target="_blank" rel="noopener noreferrer">Ver en YouTube <span aria-hidden="true">↗</span></a>
-          </div>
-        </article>
       </div>
     </section>
 
@@ -235,6 +164,6 @@
     </footer>
   </main>
 
-  <script src="script.js?v=6"></script>
+  <script src="script.js?v=7"></script>
 </body>
 </html>
