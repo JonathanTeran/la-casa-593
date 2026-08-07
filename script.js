@@ -50,8 +50,9 @@
   const soundCta = document.getElementById('soundCta');
   const gestures = ['pointerdown', 'touchstart', 'click', 'keydown'];
 
-  function onGesture() {
+  function onGesture(event) {
     releaseGestures();
+    if (event.target.closest && event.target.closest('.video-preview')) return;
     requestSound();
   }
 
@@ -198,6 +199,43 @@
       } else if (feed.webkitEnterFullscreen) {
         feed.webkitEnterFullscreen();
       }
+    });
+  }
+
+  /* ─── videos de YouTube ─── */
+
+  const youtubeVideos = document.getElementById('youtubeVideos');
+  if (youtubeVideos) {
+    let activeVideo = null;
+
+    youtubeVideos.addEventListener('click', (event) => {
+      const preview = event.target.closest('.video-preview');
+      if (!preview || !youtubeVideos.contains(preview)) return;
+
+      const videoId = preview.dataset.videoId;
+      if (!/^[\w-]{11}$/.test(videoId || '')) return;
+
+      if (activeVideo) {
+        activeVideo.embed.replaceWith(activeVideo.preview);
+      }
+
+      userPaused = true;
+      feed.pause();
+
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
+      iframe.title = preview.getAttribute('aria-label') || 'Video de La Casa 593';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      iframe.allowFullscreen = true;
+
+      const embed = document.createElement('div');
+      embed.className = 'video-embed';
+      embed.appendChild(iframe);
+
+      const originalPreview = preview.cloneNode(true);
+      preview.replaceWith(embed);
+      activeVideo = { embed, preview: originalPreview };
     });
   }
 
