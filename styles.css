@@ -679,6 +679,83 @@ svg.stroke .dot { fill: currentColor; stroke: none; }
   text-align: right;
 }
 
+/* ─────────── botón flotante de WhatsApp ─────────── */
+
+.whatsapp-floating {
+  position: fixed;
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(18px, env(safe-area-inset-bottom));
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  min-height: 58px;
+  padding: 7px 16px 7px 8px;
+  border: 1px solid rgba(255, 255, 255, .2);
+  border-radius: 999px;
+  background: rgba(8, 18, 14, .94);
+  color: #fff;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, .45), 0 0 0 1px rgba(37, 211, 102, .12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+
+.whatsapp-floating:hover {
+  transform: translateY(-3px);
+  border-color: rgba(37, 211, 102, .72);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, .5), 0 0 24px rgba(37, 211, 102, .2);
+}
+
+.whatsapp-floating:focus-visible {
+  outline: 3px solid #25d366;
+  outline-offset: 3px;
+}
+
+.whatsapp-floating-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 5px 16px rgba(37, 211, 102, .34);
+}
+
+.whatsapp-floating-icon::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border: 1px solid rgba(37, 211, 102, .55);
+  border-radius: inherit;
+  animation: whatsappPulse 2.4s ease-out infinite;
+}
+
+.whatsapp-floating-icon svg { width: 25px; }
+
+.whatsapp-floating-copy {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.whatsapp-floating-copy small {
+  color: rgba(255, 255, 255, .72);
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.whatsapp-floating-copy strong {
+  margin-top: 3px;
+  font-size: .88rem;
+  white-space: nowrap;
+}
+
 /* ─────────── movimiento ─────────── */
 
 @keyframes rise {
@@ -706,6 +783,10 @@ svg.stroke .dot { fill: currentColor; stroke: none; }
 @keyframes markIn {
   from { opacity: 0; scale: .95; filter: brightness(.4) blur(8px); }
   to { opacity: 1; scale: 1; filter: none; }
+}
+@keyframes whatsappPulse {
+  0% { scale: .86; opacity: .8; }
+  75%, 100% { scale: 1.32; opacity: 0; }
 }
 
 /* ─────────── adaptativo ─────────── */
@@ -744,6 +825,15 @@ svg.stroke .dot { fill: currentColor; stroke: none; }
   .facts { border-radius: 13px; }
   .fact { padding: 15px 13px; }
   .fact p { font-size: .74rem; }
+
+  .whatsapp-floating {
+    right: max(13px, env(safe-area-inset-right));
+    bottom: max(13px, env(safe-area-inset-bottom));
+    min-height: 54px;
+    padding: 5px;
+  }
+  .whatsapp-floating-icon { width: 44px; height: 44px; }
+  .whatsapp-floating-copy { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
