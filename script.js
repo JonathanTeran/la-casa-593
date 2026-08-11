@@ -27,7 +27,7 @@
   const mainYoutube = document.getElementById('mainYoutube');
   const youtubeVideos = document.getElementById('youtubeVideos');
   const playlistStatus = document.getElementById('playlistStatus');
-  const playOrder = ['1tJVxlhWSMw', 'vUAYoTPSsqA', 'trrZucOYHcs', 'NIVytaFvD1E'];
+  const playOrder = ['ytgZsDzQG18', '1tJVxlhWSMw', 'vUAYoTPSsqA', 'trrZucOYHcs', 'NIVytaFvD1E'];
 
   const playlistUrl = (videoId) => {
     const start = playOrder.indexOf(videoId);
