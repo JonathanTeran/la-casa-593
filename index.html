@@ -22,7 +22,7 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="preload" as="image" href="assets/logo.webp" type="image/webp" fetchpriority="high">
-  <link rel="stylesheet" href="styles.css?v=9">
+  <link rel="stylesheet" href="styles.css?v=10">
 </head>
 <body>
   <div class="glow" aria-hidden="true"></div>
@@ -45,7 +45,7 @@
         <div>
           <p class="section-kicker">Desde nuestro canal</p>
           <h2 id="youtubeTitle">Videos de La Casa 593</h2>
-          <p class="section-copy">Conoce las novedades, los habitantes y todo lo que está por comenzar.</p>
+          <p class="section-copy">Conoce las novedades, los habitantes y todo lo que está por comenzar. Los videos nuevos del canal aparecen aquí automáticamente.</p>
         </div>
 
         <a class="subscribe-button"
@@ -61,52 +61,21 @@
       <div class="playlist-layout">
         <div class="player playlist-player" aria-label="Reproductor de la lista de videos de La Casa 593">
           <div class="screen">
-            <iframe id="mainYoutube"
-                    class="main-youtube"
-                    src="https://www.youtube-nocookie.com/embed/ytgZsDzQG18?autoplay=1&amp;loop=1&amp;playlist=ytgZsDzQG18%2C1tJVxlhWSMw%2CvUAYoTPSsqA%2CtrrZucOYHcs%2CNIVytaFvD1E&amp;rel=0&amp;playsinline=1&amp;enablejsapi=1"
-                    title="La Casa 593 | Promocional de Lanzamiento"
+            <iframe class="main-youtube"
+                    src="https://www.youtube-nocookie.com/embed/videoseries?list=UUNkQUQhDShYOFLr27_SkdkA&amp;autoplay=1&amp;loop=1&amp;rel=0&amp;playsinline=1"
+                    title="Últimos videos de La Casa 593 Oficial"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerpolicy="strict-origin-when-cross-origin"
                     allowfullscreen></iframe>
           </div>
         </div>
 
-        <aside class="playlist-panel" aria-label="Lista de reproducción de La Casa 593">
-          <div class="playlist-panel-head">
-            <span>Lista de reproducción</span>
-            <strong id="playlistStatus" aria-live="polite">Reproducción continua</strong>
-          </div>
-
-          <div class="playlist-list" id="youtubeVideos">
-            <button type="button" class="playlist-item" data-video-id="ytgZsDzQG18" data-video-title="La Casa 593 | Promocional Oficial" aria-pressed="true">
-              <img src="https://i.ytimg.com/vi/ytgZsDzQG18/hqdefault.jpg" alt="" loading="lazy" decoding="async">
-              <span class="playlist-number" aria-hidden="true">01</span>
-              <span class="playlist-copy"><strong>La Casa 593 | Promocional Oficial</strong><small>YouTube · 0:50</small></span>
-              <span class="playlist-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 7 8 5-8 5V7Z"/></svg></span>
-            </button>
-
-            <button type="button" class="playlist-item" data-video-id="vUAYoTPSsqA" data-video-title="La Casa 593 | Casting" aria-pressed="false">
-              <img src="https://i.ytimg.com/vi/vUAYoTPSsqA/hqdefault.jpg" alt="" loading="lazy" decoding="async">
-              <span class="playlist-number" aria-hidden="true">02</span>
-              <span class="playlist-copy"><strong>La Casa 593 | Casting</strong><small>YouTube · 0:54</small></span>
-              <span class="playlist-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 7 8 5-8 5V7Z"/></svg></span>
-            </button>
-
-            <button type="button" class="playlist-item" data-video-id="trrZucOYHcs" data-video-title="La Casa 593 | Segundo Habitante" aria-pressed="false">
-              <img src="https://i.ytimg.com/vi/trrZucOYHcs/hqdefault.jpg" alt="" loading="lazy" decoding="async">
-              <span class="playlist-number" aria-hidden="true">03</span>
-              <span class="playlist-copy"><strong>La Casa 593 | Segundo Habitante</strong><small>YouTube · 0:51</small></span>
-              <span class="playlist-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 7 8 5-8 5V7Z"/></svg></span>
-            </button>
-
-            <button type="button" class="playlist-item" data-video-id="NIVytaFvD1E" data-video-title="La Casa 593 | Primer Habitante" aria-pressed="false">
-              <img src="https://i.ytimg.com/vi/NIVytaFvD1E/hqdefault.jpg" alt="" loading="lazy" decoding="async">
-              <span class="playlist-number" aria-hidden="true">04</span>
-              <span class="playlist-copy"><strong>La Casa 593 | Primer Habitante</strong><small>YouTube · 0:41</small></span>
-              <span class="playlist-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 7 8 5-8 5V7Z"/></svg></span>
-            </button>
-          </div>
-        </aside>
+        <div class="playlist-sync" aria-label="Estado de sincronización con YouTube">
+          <p><span aria-hidden="true"></span><strong>Sincronización automática activa</strong></p>
+          <a href="https://www.youtube.com/playlist?list=UUNkQUQhDShYOFLr27_SkdkA"
+             target="_blank"
+             rel="noopener noreferrer">Ver todos los videos en YouTube</a>
+        </div>
       </div>
     </section>
 
@@ -181,6 +150,6 @@
     </span>
   </a>
 
-  <script src="script.js?v=8"></script>
+  <script src="script.js?v=9"></script>
 </body>
 </html>

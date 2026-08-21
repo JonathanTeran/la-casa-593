@@ -23,6 +23,12 @@ Sube **el contenido de esta carpeta**, no la carpeta completa:
 8. Activa el certificado SSL desde el apartado **Certificados SSL**.
 9. Abre `https://tudominio.com` y prueba también `https://www.tudominio.com`.
 
+## Videos de YouTube
+
+El reproductor usa la lista automática de subidas del canal **La Casa 593 Oficial**. Los videos nuevos publicados en ese canal aparecerán en la web sin modificar archivos ni configurar una clave API.
+
+Si en el futuro cambia el canal oficial, actualiza el identificador de la lista de reproducción en `index.html`.
+
 Datos FTP habituales:
 
 - Servidor: `ftp.tudominio.com` o `ftp.dondominio.com`

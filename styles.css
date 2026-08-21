@@ -400,116 +400,46 @@ svg.stroke .dot { fill: currentColor; stroke: none; }
 .subscribe-button:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 
 .playlist-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1.75fr) minmax(290px, .85fr);
-  align-items: start;
-  gap: clamp(14px, 2vw, 20px);
+  width: 100%;
 }
 
 .playlist-player { margin-top: 0; }
 
-.playlist-panel {
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: rgba(9, 12, 17, .82);
-  box-shadow: 0 16px 38px rgba(0, 0, 0, .22);
-}
-
-.playlist-panel-head {
+.playlist-sync {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  min-height: 58px;
-  padding: 12px 15px;
-  background: rgba(255, 255, 255, .035);
-}
-.playlist-panel-head span {
-  font-size: .72rem;
-  font-weight: 800;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
-.playlist-panel-head strong {
-  color: var(--orange);
-  font-size: .68rem;
-  font-weight: 700;
-  text-align: right;
-}
-
-.playlist-list { border-top: 1px solid var(--line); }
-
-.playlist-item {
-  display: grid;
-  grid-template-columns: 96px 24px minmax(0, 1fr) 30px;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  min-height: 91px;
-  padding: 10px;
-  border: 0;
-  border-bottom: 1px solid var(--line);
-  background: transparent;
-  color: var(--text);
-  text-align: left;
-  cursor: pointer;
-  transition: background .2s ease, box-shadow .2s ease;
-}
-.playlist-item:last-child { border-bottom: 0; }
-.playlist-item:hover { background: rgba(255, 106, 0, .08); }
-.playlist-item[aria-pressed="true"] {
-  background: rgba(255, 106, 0, .12);
-  box-shadow: inset 3px 0 var(--orange);
-}
-.playlist-item:focus-visible { outline: 2px solid var(--orange); outline-offset: -3px; }
-
-.playlist-item img {
-  display: block;
-  width: 96px;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  border-radius: 7px;
-  background: #05070a;
-}
-
-.playlist-number {
-  color: rgba(151, 163, 180, .72);
-  font-size: .7rem;
-  font-weight: 800;
-  font-variant-numeric: tabular-nums;
-  text-align: center;
-}
-
-.playlist-copy { min-width: 0; }
-.playlist-copy strong {
-  display: -webkit-box;
-  overflow: hidden;
-  font-size: clamp(.76rem, 1.3vw, .88rem);
-  line-height: 1.32;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-.playlist-copy small {
-  display: block;
-  margin-top: 6px;
+  gap: 16px;
+  padding: 13px 4px 0;
   color: var(--muted);
-  font-size: .66rem;
+  font-size: clamp(.72rem, 1.6vw, .82rem);
 }
 
-.playlist-play {
-  display: grid;
-  place-items: center;
-  width: 30px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, .08);
-  color: #fff;
-  transition: background .2s ease, scale .2s ease;
+.playlist-sync p {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
 }
-.playlist-play svg { width: 16px; translate: 1px 0; }
-.playlist-item:hover .playlist-play,
-.playlist-item[aria-pressed="true"] .playlist-play { background: #ff0033; scale: 1.06; }
+
+.playlist-sync p > span {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #25d366;
+  box-shadow: 0 0 10px rgba(37, 211, 102, .65);
+}
+
+.playlist-sync strong { color: #dfe6f0; }
+
+.playlist-sync a {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.playlist-sync a:hover { text-decoration: underline; }
+.playlist-sync a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
 
 /* ─────────── preparación ─────────── */
 
@@ -792,8 +722,6 @@ svg.stroke .dot { fill: currentColor; stroke: none; }
 /* ─────────── adaptativo ─────────── */
 
 @media (max-width: 860px) {
-  .playlist-layout { grid-template-columns: 1fr; }
-
   .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .fact:nth-child(odd) { border-left: 0; }
   .fact:nth-child(n + 3) { border-top: 1px solid var(--line); }
@@ -818,9 +746,7 @@ svg.stroke .dot { fill: currentColor; stroke: none; }
 
   .section-head { align-items: stretch; flex-direction: column; gap: 16px; }
   .subscribe-button { align-self: flex-start; }
-  .playlist-panel { border-radius: 12px; }
-  .playlist-item { grid-template-columns: 88px 22px minmax(0, 1fr) 28px; gap: 8px; }
-  .playlist-item img { width: 88px; }
+  .playlist-sync { align-items: flex-start; flex-direction: column; gap: 9px; }
 
   .facts { border-radius: 13px; }
   .fact { padding: 15px 13px; }
